@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-cyber-bg: #0a0a0b;
+  --color-cyber-card: #121214;
+  --color-cyber-accent: #10b981; /* Emerald 500 */
+  --color-cyber-border: rgba(16, 185, 129, 0.2);
+  --color-cyber-text: #e2e8f0;
+  --color-cyber-muted: #94a3b8;
+}
+
+@layer base {
+  body {
+    @apply bg-cyber-bg text-cyber-text font-sans selection:bg-cyber-accent/30 selection:text-cyber-accent;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-mono tracking-tight;
+  }
+}
+
+@layer components {
+  .cyber-grid {
+    background-image: radial-gradient(circle at 1px 1px, rgba(16, 185, 129, 0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+
+  .cyber-border {
+    @apply border border-cyber-border bg-cyber-card/50 backdrop-blur-sm;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+  }
+
+  .terminal-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.2em;
+    background-color: var(--color-cyber-accent);
+    margin-left: 4px;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
